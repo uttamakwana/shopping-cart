@@ -1,0 +1,5 @@
+.not-found-page-home-btn {
+  background-color: var(--clr-dark);
+  color: var(--clr-light-gray);
+  align-self: center;
+}

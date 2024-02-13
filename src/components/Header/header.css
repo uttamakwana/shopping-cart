@@ -1,0 +1,106 @@
+/* Main Header */
+.header {
+  background-color: var(--clr-dark);
+  height: 80px;
+  z-index: 10;
+}
+
+/* 1. Header-Logo */
+.header-logo {
+  max-width: 200px;
+  height: 30px;
+}
+
+/* 2. Header-Search Container */
+.header-search-container {
+  flex: 1;
+  max-width: 600px;
+  min-width: 150px;
+}
+
+/* 2.1 Header-Search-Container Select */
+.header-search-container #select {
+  background-color: var(--clr-light-gray);
+  padding-inline: 8px;
+}
+
+/* 2.2 Header-Search-Container Input */
+.header-search-container #search {
+  flex: 1;
+}
+
+/* 2.3 Header-Search-Container Button */
+.header-search-container .search-btn {
+  background-color: var(--clr-accent-300);
+  font-size: 100%;
+}
+
+.header-search-container .search-btn:focus {
+  background-color: var(--clr-accent);
+}
+
+@media (width <= 400px) {
+  .header-logo.desktop-logo {
+    display: none;
+  }
+
+  .header-search-container > * {
+    padding-block: 10px;
+  }
+
+  .header-search-container #search {
+    padding-inline: 8px;
+    min-width: 100px;
+  }
+}
+
+.header .dropdown {
+  top: 100%;
+  background-color: var(--clr-light-gray);
+  left: 0;
+  height: 150px;
+  overflow: auto;
+}
+
+.header .dropdown li {
+  text-transform: capitalize;
+}
+
+.header .dropdown::-webkit-scrollbar {
+  width: 2px;
+}
+
+.header .dropdown::-webkit-scrollbar-track {
+  background-color: var(--clr-light-gray);
+}
+
+.header .dropdown::-webkit-scrollbar-thumb {
+  background-color: var(--clr-dark);
+}
+
+.header .dropdown li {
+  padding: 8px;
+}
+
+.header-cart-icon {
+  font-size: clamp(30px, 3vw, 30px);
+  color: var(--clr-light-gray);
+}
+
+.header-search-suggestions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: var(--clr-light-gray);
+  display: flex;
+  flex-direction: column;
+  max-height: 350px;
+  overflow: auto;
+}
+
+.suggestion-item.active,
+.suggestion-item:hover {
+  background-color: var(--clr-dark);
+  color: var(--clr-light-gray);
+}
