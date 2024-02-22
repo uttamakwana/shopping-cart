@@ -15,7 +15,7 @@ const Input = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const showSearchBar = location.pathname === "/";
-
+  const inputRef = useRef(null);
   const [selectedSuggestion, setSelectedSuggestion] = useState({
     index: -1,
     value: null,
@@ -86,15 +86,20 @@ const Input = () => {
   };
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    const response = await fetch(
-      `https://dummyjson.com/products/search?q=${selectedSuggestion.value}`
-    );
-    const data = await response.json();
-    dispatch(addProducts(data.products));
-    console.log(data);
-    setSuggestions([]);
-    setSelectedSuggestion({ index: -1, value: null });
+    if (e.target[0].value) {
+      e.preventDefault();
+      const response = await fetch(
+        `https://dummyjson.com/products/search?q=${selectedSuggestion.value}`
+      );
+      const data = await response.json();
+      dispatch(addProducts(data.products));
+      console.log(data);
+      setSuggestions([]);
+      setSelectedSuggestion({ index: -1, value: null });
+      inputRef.current.value = "";
+    } else {
+      alert("Please enter something!");
+    }
   }
 
   async function handleClickOnSuggestionItem(itemValue) {
@@ -215,6 +220,7 @@ const Input = () => {
           placeholder="Search products"
           className="p-1 border-none outline-none"
           onChange={(e) => fetchSuggestions(e)}
+          ref={inputRef}
           autoComplete="off"
           aria-autocomplete="off"
         />

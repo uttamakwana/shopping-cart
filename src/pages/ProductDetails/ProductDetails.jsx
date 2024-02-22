@@ -125,7 +125,12 @@ const ProductDetails = () => {
                 Add to Cart
               </button>
             )}
-            <button className="buy-now-btn">Buy Now</button>
+            <button
+              className="buy-now-btn"
+              onClick={() => alert("Coming soon!")}
+            >
+              Buy Now
+            </button>
           </div>
         </div>
       </div>

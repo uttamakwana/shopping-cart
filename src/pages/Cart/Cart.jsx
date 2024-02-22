@@ -27,11 +27,14 @@ const Cart = () => {
   }, [cart]);
 
   const removeFromCart = (item) => {
-    const filteredCart = cart.filter(
-      (cartItem) => item.title !== cartItem.title
-    );
-    localStorage.setItem("my-amazon-cart", JSON.stringify(filteredCart));
-    dispatch(addToCart(filteredCart));
+    const sureToDelete = confirm(`Want to delete the item: ${item.title}`);
+    if (sureToDelete) {
+      const filteredCart = cart.filter(
+        (cartItem) => item.title !== cartItem.title
+      );
+      localStorage.setItem("my-amazon-cart", JSON.stringify(filteredCart));
+      dispatch(addToCart(filteredCart));
+    }
   };
 
   const updateQuantity = (item, newQuantity) => {
@@ -129,7 +132,12 @@ const Cart = () => {
               >
                 Delete
               </button>
-              <button className="extra-btn">See More Details</button>
+              <button
+                className="extra-btn"
+                onClick={() => navigate(`/product/${item.title}`)}
+              >
+                See More Details
+              </button>
             </div>
           </div>
         ))}
